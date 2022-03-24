@@ -34,10 +34,8 @@ func (student *Student) updateMarks(marks []int) {
 
 func (student Student) getGrade() string {
 	var grade string
-	var total int
-	for _, mark := range student.Marks {
-		total += mark
-	}
+	total := student.getAverageGrade()
+
 	if total >= 90 {
 		grade = "A"
 	} else if total >= 80 {
@@ -50,6 +48,24 @@ func (student Student) getGrade() string {
 		grade = "F"
 	}
 	return grade
+}
+
+func (student Student) getAverageGrade() float32 {
+	var total int
+	for _, mark := range student.Marks {
+		total += mark
+	}
+	return float32(total / len(student.Marks))
+}
+
+func (student Student) getMaxMark() int {
+	var max int
+	for _, mark := range student.Marks {
+		if mark > max {
+			max = mark
+		}
+	}
+	return max
 }
 
 func main() {
@@ -71,7 +87,9 @@ func main() {
 
 	fmt.Println(student1)
 	student1.studentDetails()
-	student1.updateMarks([]int{100, 90, 80})
+	student1.updateMarks([]int{96, 84, 38})
 	student1.studentDetails()
 	fmt.Println("Grade:", student1.getGrade())
+	fmt.Println("Average grade:", student1.getAverageGrade())
+	fmt.Println("Max mark:", student1.getMaxMark())
 }
