@@ -39,9 +39,17 @@ func main() {
 	fmt.Println(users)
 
 	// append a new user
-	users = append(users, User{Name: "Nibbi2", Email: "nibbi2@go.dev", Age: 26})
+	users = append(
+		users,
+		User{Name: "Nibbi2", Email: "nibbi2@go.dev", Age: 26},
+		User{Name: "Nibbi3", Email: "nibbi2@go.dev", Age: 27},
+		User{Name: "Nibbi4", Email: "nibbi2@go.dev", Age: 28},
+		User{Name: "Nibbi5", Email: "nibbi2@go.dev", Age: 29},
+		User{Name: "Nibbi5", Email: "nibbi2@go.dev", Age: 29},
+	)
 
 	for index := range users {
 		fmt.Println(users[index].Name)
 	}
+
 }
